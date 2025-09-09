@@ -4,19 +4,16 @@ import { useRef, useEffect } from "react"
 import {
   DocumentEditorContainerComponent,
   Toolbar,
-  Ribbon,
   Inject,
   Print,
   SfdtExport,
   WordExport,
-  TextExport,
   Selection,
   Search,
   Editor,
   ImageResizer,
   EditorHistory,
   ContextMenu,
-  OptionsPane,
   HyperlinkDialog,
   TableDialog,
   BookmarkDialog,
@@ -39,21 +36,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button as FluentButton } from "@fluentui/react-components"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 
-// Register Syncfusion services
+// Register Syncfusion services globally - this ensures all services are available
 DocumentEditorContainerComponent.Inject(
   Toolbar, 
-  Ribbon,
   Print,
   SfdtExport,
   WordExport,
-  TextExport,
   Selection,
   Search,
   Editor,
   ImageResizer,
   EditorHistory,
   ContextMenu,
-  OptionsPane,
   HyperlinkDialog,
   TableDialog,
   BookmarkDialog,
@@ -82,30 +76,8 @@ export default function DocumentEditor({
 }: DocumentEditorProps) {
   const containerRef = useRef<DocumentEditorContainerComponent | null>(null)
 
-  // Complete toolbar items configuration with better organization
-  const toolbarItems = [
-    // File operations
-    'New', 'Open', 'Separator',
-    
-    // Edit operations
-    'Undo', 'Redo', 'Separator',
-    'LocalClipboard', 'Separator',
-    
-    // Insert content
-    'Image', 'Table', 'Hyperlink', 'Bookmark', 'TableOfContents', 'Separator',
-    
-    // Page layout
-    'Header', 'Footer', 'PageSetup', 'PageNumber', 'Break', 'InsertFootnote', 'InsertEndnote', 'Separator',
-    
-    // Tools
-    'Find', 'Separator',
-    
-    // Collaboration
-    'Comments', 'TrackChanges', 'Separator',
-    
-    // Document control
-    'RestrictEditing', 'FormFields', 'UpdateFields', 'ContentControl'
-  ]
+  // Use default toolbar configuration like the reference repository
+  // This ensures we get the same toolbar behavior as the working example
 
 
   useEffect(() => {
@@ -443,26 +415,22 @@ export default function DocumentEditor({
             ref={containerRef}
             height={height}
             enableToolbar={true}
-            showPropertiesPane={true}
+            showPropertiesPane={false}
             serviceUrl={serviceUrl}
             style={{ width: '100%' }}
-            toolbarItems={toolbarItems as any}
             toolbarClick={onToolbarClick}
           >
             <Inject services={[
               Toolbar, 
-              Ribbon,
               Print,
               SfdtExport,
               WordExport,
-              TextExport,
               Selection,
               Search,
               Editor,
               ImageResizer,
               EditorHistory,
               ContextMenu,
-              OptionsPane,
               HyperlinkDialog,
               TableDialog,
               BookmarkDialog,
