@@ -55,7 +55,12 @@ The application supports multiple document formats:
 ### Environment Variables
 - `NEXT_PUBLIC_SYNCFUSION_LICENSE_KEY`: Syncfusion license key (see `.env.example`)
 - `NEXT_PUBLIC_DOCUMENT_SERVICE_URL`: Custom document service URL (optional)
+
+⚠️ **Security Note**: 
+- Never commit real API keys or license keys to version control
 - Create `.env.local` file for local development (already in .gitignore)
+- Get your free Syncfusion license at: https://www.syncfusion.com/products/communitylicense
+- The `.env.example` file should only contain placeholder values
 
 ### Component Usage Patterns
 - Use dynamic imports for Syncfusion components to avoid SSR issues
